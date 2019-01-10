@@ -35,7 +35,15 @@ int main(int argc, char **argv) {
   int lamp;
   int verbose = 0;
   
-  while ((c = getopt(argc, argv, "hli:cva:")) != -1)
+  /* --- Command line flags ---
+    h: turn lamp on
+    l: turn lamp off
+    i: set integration time to <value> microseconds
+    c: collect spectrum
+    v: enable verbose mode
+    a: Collect <value> scans and return average spectrum
+  */
+  while ((c = getopt(argc, argv, "qhli:cva:")) != -1)
     switch (c) {
     case 'h':
       lflag = 1;
@@ -124,7 +132,7 @@ int main(int argc, char **argv) {
       if(error)printf("Problem setting integration time. [%s]\n", sbapi_get_error_string(error));
     }
   }
-  
+
   /* Set the lamp, if requested */
   if(lflag){
     if(verbose)printf("Turning lamp %s.\n",lamp ? "on" : "off");
