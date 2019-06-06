@@ -14,8 +14,11 @@ Install the Seabreeze SDK (I need to remember how)
 - copy os-support/linux/10-oceanoptics.rules to /etc/udev/rules.d and reboot
 - for testing use `export LD_LIBRARY_PATH="$PWD/lib"`
 - Copy libseabreaze.so to /usr/local/lib and run sudo ldconfig -v 
+- make the executable
+- Copy the executable (flame) and flame.wl to $UserBaseDirectory/Applications/flame
 
 ## Usage
 
+- If everything was done properly, loading Mathematica then loading the package and running lamp[1] should turn the lamp on.
 Work in progress
 

@@ -1,7 +1,8 @@
 (* ::Package:: *)
 
 BeginPackage["flame`"];
-$flamepath = "/home/pi/Projects/seafim";
+$flamepath = FileNameJoin[{$UserBaseDirectory, "Applications/flame"}];
+$flame = FileNameJoin[{$flamepath, "flame"}];
 (* Notebook is in the same directory as flame executable *)
 lamp[enable_Integer]:= Module[{p,o,t,a},
   a = If[enable==1,"-h","-l"];
@@ -14,9 +15,9 @@ lamp[enable_Integer]:= Module[{p,o,t,a},
     t = ReadString[p,EndOfBuffer];
   ];
 ]
-
+	
 collect[int_Integer,avg_Integer:1]:= Module[{p,o,t},
-  p = StartProcess[{"./flame","-ci",ToString@int,"-a",ToString@avg}];
+  p = StartProcess[{$flame,"-ci",ToString@int,"-a",ToString@avg}];
   (* Something will be returned if there is an error, so don't remove this *)
   t = ReadString[p,EndOfBuffer];
   o = "";
